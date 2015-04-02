@@ -48,3 +48,38 @@ var isEven = function (num) {
 console.log(isEven(50));
 console.log(isEven(75));
 console.log(isEven(-1));
+
+//problem 3.3
+var countBs = function(string){
+	var count = 0;
+	for (var i =0;i<string.length;i++){
+		if(string.charAt(i) === 'B'){
+			count += 1;
+		}
+	}
+	return count;
+};
+var countChar = function(string, thing){
+	var count = 0;
+	for (var i =0;i<string.length;i++){
+		if(string.charAt(i) === thing){
+			count += 1;
+		}
+	}
+	return count;
+};
+console.log(countBs("BBC"));
+console.log(countChar("kakkerlak", "k"));
+
+
+
+
+
+
+
+
+
+
+
+
+
