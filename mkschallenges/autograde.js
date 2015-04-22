@@ -1,5 +1,8 @@
 function autograde (report) {
     var arr = report.split("\n");
+    var hash_out = {};
+    var sum = 0;
+    var avg = []
     for (var i = 0; i< arr.length; i++){
         var student = arr[i].split(' ');
         var grade_array = [];
@@ -12,10 +15,17 @@ function autograde (report) {
             total += grade_array[k];
         }
         avg_array.push(total);
-        var avg = avg_array/grade_array.length;
-        console.log(avg);
-        //push to object here
+        avg.push(avg_array/grade_array.length);
+        for (var n = 0;n<avg.length; n++){
+            hash_out[student[0]] = avg[n]
+        }
     }
+    for (var m = 0; m<avg.length;m++){
+            sum += avg[m]
+    }
+    var total_avg = parseFloat((sum/avg.length).toFixed(2))
+    hash_out['all'] = total_avg
+    return hash_out
 }
 
 
