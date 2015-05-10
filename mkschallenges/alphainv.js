@@ -34,3 +34,5 @@ function alphaCount (alphabet, text) {
 // alphaCount("x","Racer X is my friend :)");
 // alphaCount("123","o hai");
 alphaCount("i8gec","uoeu8382aeouhi488ap283.8");
+//This is working. I changed from the preious try of having it dump in to a single object. I instead split it to two arrays
+// and then combined in the empty string of answer in order to get the right order as objects have no order or sorting available, only arrays.
