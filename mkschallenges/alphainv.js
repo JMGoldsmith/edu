@@ -1,31 +1,27 @@
 function alphaCount (alphabet, text) {
  var arr = [];
- var object = {};
+ var letters = [];
+ var nums = [];
+ var prev;
  answer = "";
-
-    for (x = 0; x < alphabet.length; x++){
-        var stuffed = {}
-        stuffed[alphabet[x].toLowerCase] = 0;
-        arr.push(stuffed);
-    }
-    //object is inserting the '8' prior to everything else. Need to re-order it. Even when pushing to an array, it plops it down front. May need
-    // to re-combine it on line 25 by matching to original string order.
-    console.log(arr)
-    for (i = 0; i<arr.length; i++){
-            var arrKeys = Object.keys(arr[i]);
-            object[arrKeys] = 0;
-            console.log(object)
-    }
-
-    for (y = 0; y < text.length; y++){
-        if (object[text[y].toLowerCase()] !== undefined){
-            object[text[y].toLowerCase()] += 1;
+    for (var x = 0; x< alphabet.length; x++){
+        for (y = 0; y < text.length; y++){
+            if (alphabet[x].toLowerCase() === text[y].toLowerCase()){
+                arr.push(alphabet[x]);
+            }
         }
     }
-    for(var item in object){
-        if (object[item] > 0){
-            answer += item + ":" + object[item] + ",";
-            }
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( arr[i] !== prev ) {
+            letters.push(arr[i]);
+            nums.push(1);
+        } else {
+            nums[nums.length-1]++;
+        }
+        prev = arr[i];
+    }
+    for(var j = 0; j< letters.length; j++){
+            answer += letters[j] + ":" + nums[j] + ",";
     }
     if (answer === ''){
         console.log("No matches found");
@@ -33,7 +29,6 @@ function alphaCount (alphabet, text) {
     else {
     return answer.slice(0,-1);
     }
-
 }
 // alphaCount("a1Bc","aabbcc11dd");
 // alphaCount("x","Racer X is my friend :)");
